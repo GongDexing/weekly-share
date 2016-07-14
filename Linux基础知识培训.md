@@ -116,7 +116,7 @@ srv代表服务。
 - cal 2007 显示2007年的日历表
 - date 041217002007.00 设置日期和时间 - 月日时分年.秒
 - clock -w 将时间修改保存到 BIOS
--
+
 ### 关机 (系统的关机、重启以及登出 )
 - shutdown -h now 关闭系统(1)
 - init 0 关闭系统(2)
@@ -126,7 +126,7 @@ srv代表服务。
 - shutdown -r now 重启(1)
 - reboot 重启(2)
 - logout 注销
--
+
 ### 挂载一个文件系统
 - mount /dev/hda2 /mnt/hda2 挂载一个叫做hda2的盘 - 确定目录 '/ mnt/hda2' 已经存在
 - umount /dev/hda2 卸载一个叫做hda2的盘 - 先从挂载点 '/ mnt/hda2' 退出
@@ -140,7 +140,7 @@ srv代表服务。
 - mount -t vfat /dev/hda5 /mnt/hda5 挂载一个Windows FAT32文件系统
 - mount /dev/sda1 /mnt/usbdisk 挂载一个usb 捷盘或闪存设备
 - mount -t smbfs -o username=user,password=pass //WinClient/share /mnt/share 挂载一个windows网络共享
--
+
 ### 磁盘空间
 - df -h 显示已经挂载的分区列表
 - ls -lSr |more 以尺寸大小排列文件和目录
@@ -148,7 +148,7 @@ srv代表服务。
 - du -sk * | sort -rn 以容量大小为依据依次显示文件和目录的大小
 - rpm -q -a --qf '%10{SIZE}t%{NAME}n' | sort -k1,1n 以大小为依据依次显示已安装的rpm包所使用的空间 (fedora, redhat类系统)
 - dpkg-query -W -f='${Installed-Size;10}t${Package}n' | sort -k1,1n 以大小为依据显示已安装的deb包所使用的空间 (ubuntu, debian类系统)
--
+
 ### 用户和群组
 - groupadd group_name 创建一个新用户组
 - groupdel group_name 删除一个用户组
@@ -163,7 +163,7 @@ srv代表服务。
 - pwck 检查 '/etc/passwd' 的文件格式和语法修正以及存在的用户
 - grpck 检查 '/etc/passwd' 的文件格式和语法修正以及存在的群组
 - newgrp group_name 登陆进一个新的群组以改变新创建文件的预设群组
--
+
 ### 文件操作
 #### 文件和目录
 - cd /home 进入 '/ home' 目录'
@@ -199,7 +199,7 @@ srv代表服务。
 - iconv -l 列出已知的编码
 - iconv -f fromEncoding -t toEncoding inputFile > outputFile creates a new from the given input file by assuming it is encoded in fromEncoding and converting it to toEncoding.
 - find . -maxdepth 1 -name *.jpg -print -exec convert "{}" -resize 80x60 "thumbs/{}" \; batch resize files in the current directory and send them to a thumbnails directory (requires convert from Imagemagick)
--
+
 ### 文件搜索
 - find / -name file1 从 '/' 开始进入根文件系统搜索文件和目录
 - find / -user user1 搜索属于用户 'user1' 的文件和目录
@@ -227,7 +227,7 @@ srv代表服务。
 - chmod g-s /home/public 禁用一个目录的 SGID 位
 - chmod o+t /home/public 设置一个文件的 STIKY 位 - 只允许合法所有人删除文件
 - chmod o-t /home/public 禁用一个目录的 STIKY 位
--
+
 #### 文件的特殊属性 - 使用 "+" 设置权限，使用 "-" 用于取消
 - chattr +a file1 只允许以追加方式读写文件
 - chattr +c file1 允许这个文件能被内核自动压缩/解压
@@ -237,7 +237,7 @@ srv代表服务。
 - chattr +S file1 一旦应用程序对这个文件执行了写操作，使系统立刻把修改的结果写到磁盘
 - chattr +u file1 若文件被删除，系统会允许你在以后恢复这个被删除的文件
 - lsattr 显示特殊的属性
--
+
 ### 打包和压缩文件
 - bunzip2 file1.bz2 解压一个叫做 'file1.bz2'的文件
 - bzip2 file1 压缩一个叫做 'file1' 的文件
@@ -260,6 +260,7 @@ srv代表服务。
 - zip file1.zip file1 创建一个zip格式的压缩包
 - zip -r file1.zip file1 file2 dir1 将几个文件和目录同时压缩成一个zip格式的压缩包
 - unzip file1.zip 解压一个zip格式压缩包
+
 ### 包安装
 #### RPM 包 - （Fedora, Redhat及类似系统）
 - rpm -ivh package.rpm 安装一个rpm包
@@ -288,7 +289,7 @@ srv代表服务。
 - rpm2cpio package.rpm | cpio --extract --make-directories *bin* 从一个rpm包运行可执行文件
 - rpm -ivh /usr/src/redhat/RPMS/`arch`/package.rpm 从一个rpm源码安装一个构建好的包
 - rpmbuild --rebuild package_name.src.rpm 从一个rpm源码构建一个 rpm 包
--
+
 #### YUM 软件包升级器 - （Fedora, RedHat及类似系统）
 - yum install package_name 下载并安装一个rpm包
 - yum localinstall package_name.rpm 将安装一个rpm包，使用你自己的软件仓库为你解决所有依赖关系
@@ -300,7 +301,7 @@ srv代表服务。
 - yum clean packages 清理rpm缓存删除下载的包
 - yum clean headers 删除所有头文件
 - yum clean all 删除所有缓存的包和头文件
--
+
 #### DEB 包 (Debian, Ubuntu 以及类似系统)
 - dpkg -i package.deb 安装/更新一个 deb 包
 - dpkg -r package_name 从系统删除一个 deb 包
@@ -310,7 +311,7 @@ srv代表服务。
 - dpkg -L package_name 显示系统中已经安装的一个deb包所提供的文件列表
 - dpkg --contents package.deb 显示尚未安装的一个包所提供的文件列表
 - dpkg -S /bin/ping 确认所给的文件由哪个deb包提供
--
+
 #### APT 软件工具 (Debian, Ubuntu 以及类似系统)
 - apt-get install package_name 安装/更新一个 deb 包
 - apt-cdrom install package_name 从光盘安装/更新一个 deb 包
@@ -320,7 +321,7 @@ srv代表服务。
 - apt-get check 确认依赖的软件仓库正确
 - apt-get clean 从下载的软件包中清理缓存
 - apt-cache search searched-package 返回包含所要搜索字符串的软件包名称
--
+
 ### 查看文件内容
 - cat file1 从第一个字节开始正向查看文件的内容
 - tac file1 从最后一行开始反向查看一个文件的内容
@@ -329,7 +330,7 @@ srv代表服务。
 - head -2 file1 查看一个文件的前两行
 - tail -2 file1 查看一个文件的最后两行
 - tail -f /var/log/messages 实时查看被添加到一个文件中的内容
--
+
 ### 文本处理
 - cat file1 file2 ... | command <> file1_in.txt_or_file1_out.txt general syntax for text manipulation using PIPE, STDIN and STDOUT
 - cat file1 | command( sed, grep, awk, grep, etc...) > result.txt 合并一个文件的详细说明文本，并将简介写入一个新文件中
@@ -362,7 +363,7 @@ srv代表服务。
 - comm -1 file1 file2 比较两个文件的内容只删除 'file1' 所包含的内容
 - comm -2 file1 file2 比较两个文件的内容只删除 'file2' 所包含的内容
 - comm -3 file1 file2 比较两个文件的内容只删除两个文件共有的部分
--
+
 ### 文件格式转换
 - dos2unix filedos.txt fileunix.txt 将一个文本文件的格式从MSDOS转换成UNIX
 - unix2dos fileunix.txt filedos.txt 将一个文本文件的格式从UNIX转换成MSDOS
@@ -390,7 +391,7 @@ srv代表服务。
 - mkswap /dev/hda3 创建一个swap文件系统
 - swapon /dev/hda3 启用一个新的swap文件系统
 - swapon /dev/hda2 /dev/hdb3 启用两个swap分区
--
+
 ### 备份
 - dump -0aj -f /tmp/home0.bak /home 制作一个 '/home' 目录的完整备份
 - dump -1aj -f /tmp/home0.bak /home 制作一个 '/home' 目录的交互式备份
@@ -409,7 +410,7 @@ srv代表服务。
 - find /var/log -name '*.log' | tar cv --files-from=- | bzip2 > log.tar.bz2 查找所有以 '.log' 结尾的文件并做成一个bzip包
 - dd if=/dev/hda of=/dev/fd0 bs=512 count=1 做一个将 MBR (Master Boot Record)内容复制到软盘的动作
 - dd if=/dev/fd0 of=/dev/hda bs=512 count=1 从已经保存到软盘的备份中恢复MBR内容
--
+
 ### 光盘
 - cdrecord -v gracetime=2 dev=/dev/cdrom -eject blank=fast -force 清空一个可复写的光盘内容
 - mkisofs /dev/cdrom > cd.iso 在磁盘上创建一个光盘的iso镜像文件
@@ -422,7 +423,7 @@ srv代表服务。
 - cd-paranoia -- "-3" 从一个CD光盘转录音轨到 wav 文件中（参数-3）
 - cdrecord --scanbus 扫描总线以识别scsi通道
 - dd if=/dev/hdc | md5sum 校验一个设备的md5sum编码，例如一张 CD
--
+
 ### 网络（以太网和WIFI无线）
 - ifconfig eth0 显示一个以太网卡的配置
 - ifup eth0 启用一个 'eth0' 网络设备
